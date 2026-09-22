@@ -33,6 +33,11 @@ case "${app_release}" in
     app_name="android-studio-beta"
     ;;
 
+"canary")
+    app_title="Android Studio (Canary)"
+    app_name="android-studio-canary"
+    ;;
+
 *)
     echo "Unknown release type: ${app_release}"
     exit 1

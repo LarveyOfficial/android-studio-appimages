@@ -24,7 +24,9 @@ jobs:
                           repo: context.repo.repo,
                       });
                       const latest = releases.find(x => !x.draft && !x.prerelease);
-                      const prerelease = releases.find(x => !x.draft && x.prerelease);
+                      const hasAsset = (x, prefix) => x.assets.some(a => a.name.startsWith(prefix));
+                      const prerelease = releases.find(x => !x.draft && x.prerelease && hasAsset(x, "android-studio-beta-"));
+                      const canary = releases.find(x => !x.draft && x.prerelease && hasAsset(x, "android-studio-canary-"));
                       const outputDir = p.join(process.cwd(), "dist-badges");
                       await fs.mkdir(outputDir, { recursive: true });
                       await fs.writeFile(p.join(outputDir, "badge-latest.json"), JSON.stringify({
@@ -37,6 +39,12 @@ jobs:
                           schemaVersion: 1,
                           label: "latest (pre-release)",
                           message: prerelease?.tag_name ?? "unknown",
+                          color: "blue",
+                      }));
+                      await fs.writeFile(p.join(outputDir, "badge-canary.json"), JSON.stringify({
+                          schemaVersion: 1,
+                          label: "latest (canary)",
+                          message: canary?.tag_name ?? "unknown",
                           color: "blue",
                       }));
 

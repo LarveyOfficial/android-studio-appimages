@@ -21,6 +21,11 @@ on:
                 type: boolean
                 required: true
                 default: true
+            build-canary:
+                description: Should build canary?
+                type: boolean
+                required: true
+                default: true
 
 permissions:
     contents: write
@@ -31,7 +36,7 @@ jobs:
         continue-on-error: true
         strategy:
             matrix:
-                version: [stable, beta]
+                version: [stable, beta, canary]
         env:
             X_APP_VERSION: ""
             X_APP_RELEASE: ${{ matrix.version }}
@@ -62,6 +67,7 @@ jobs:
               env:
                   X_BUILD_STABLE: ${{ inputs.build-stable }}
                   X_BUILD_BETA: ${{ inputs.build-beta }}
+                  X_BUILD_CANARY: ${{ inputs.build-canary }}
 
             - name: ♻️ Check for existing releases
               run: |
@@ -81,7 +87,7 @@ jobs:
               uses: ncipollo/release-action@v1
               if: ${{ env.X_REQUIRES_BUILD == 'yes' }}
               with:
-                  body: "Android Studio Version: `${{ env.X_APP_VERSION }}`"
+                  body: "Android Studio Version: `${{ env.X_APP_VERSION }}` (${{ env.X_APP_RELEASE }})"
                   tag: ${{ env.X_TAG_NAME }}
                   artifacts: "dist/*"
                   generateReleaseNotes: false
@@ -90,7 +96,7 @@ jobs:
                   allowUpdates: true
                   replacesArtifacts: true
                   makeLatest: true
-                  prerelease: ${{ env.X_APP_RELEASE == 'beta' }}
+                  prerelease: ${{ env.X_APP_RELEASE != 'stable' }}
 
     generate-badge:
         needs: [release]

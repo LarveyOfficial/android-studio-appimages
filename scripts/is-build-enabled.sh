@@ -12,4 +12,8 @@ if [ "${X_APP_RELEASE}" == "beta" ] && [ "${X_BUILD_BETA}" != "false" ]; then
     result="yes"
 fi
 
+if [ "${X_APP_RELEASE}" == "canary" ] && [ "${X_BUILD_CANARY}" != "false" ]; then
+    result="yes"
+fi
+
 echo "${result}"

@@ -2,12 +2,13 @@
 
 [![Latest](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fzyrouge%2Fandroid-studio-appimages%2Fdist-badges%2Fbadge-latest.json)](https://github.com/zyrouge/android-studio-appimages/releases/latest)
 [![Latest (Pre-release)](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fzyrouge%2Fandroid-studio-appimages%2Fdist-badges%2Fbadge-prerelease.json)](https://github.com/zyrouge/android-studio-appimages/releases)
+[![Latest (Canary)](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fzyrouge%2Fandroid-studio-appimages%2Fdist-badges%2Fbadge-canary.json)](https://github.com/zyrouge/android-studio-appimages/releases)
 [![Release](https://github.com/zyrouge/android-studio-appimages/actions/workflows/release.yml/badge.svg)](https://github.com/zyrouge/android-studio-appimages/actions/workflows/release.yml)
 [![Badges](https://github.com/zyrouge/android-studio-appimages/actions/workflows/badges.yml/badge.svg)](https://github.com/zyrouge/android-studio-appimages/actions/workflows/badges.yml)
 
-Packages [Android Studio](https://developer.android.com/studio) and [Android Studio Preview](https://developer.android.com/studio/preview) as AppImages.
+Packages [Android Studio](https://developer.android.com/studio) and [Android Studio Preview](https://developer.android.com/studio/preview) (Beta & Canary) as AppImages.
 
-AppImages are directly created from `.tar.gz` builds and are not decompiled or modified. AppImages are compiled in Ubuntu 20.04. Latest releases contain stable version and pre-releases contain beta version.
+AppImages are directly created from `.tar.gz` builds and are not decompiled or modified. AppImages are compiled in Ubuntu 20.04. Latest releases contain stable version and pre-releases contain beta or canary versions. Each release channel produces a differently named AppImage (`android-studio-*`, `android-studio-beta-*`, `android-studio-canary-*`), so they can be installed side by side.
 
 ## Supported Builds
 
