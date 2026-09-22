@@ -13,7 +13,7 @@ if [ "${X_FORCE_BUILD}" == "true" ]; then
 fi
 
 tag_name=$1
-repo="zyrouge/android-studio-appimages"
+repo="${GITHUB_REPOSITORY:-$(git remote get-url origin | sed -E 's#^.*github\.com[:/]##; s#\.git$##')}"
 
 api_url="https://api.github.com/repos/${repo}/releases/tags/${tag_name}"
 data=$(curl --fail -s -A "${curl_ua}" "${api_url}")
